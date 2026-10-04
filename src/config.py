@@ -36,4 +36,4 @@ SPREADSHEET_ID = os.getenv("SPREADSHEET_ID", "")
 SPREADSHEET_NAME = os.getenv("SPREADSHEET_NAME", "Advance Settlement Reconciliation - SouthCity")
 
 # Model configuration
-GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-2.5-flash")
+GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-3.5-flash-lite")

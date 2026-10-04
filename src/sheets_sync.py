@@ -120,33 +120,73 @@ class DualSheetExporter:
             ws.cell(row=idx, column=4, value=desc).border = thin_border
 
         # EXECUTIVE SUMMARY TEXT SECTION (Row 13 onwards)
-        ws.cell(row=13, column=2, value="EXECUTIVE SUMMARY (AI GENERATED)").font = section_font
+        ws.cell(row=13, column=2, value="EXECUTIVE SUMMARY (LAPORAN REKONSILIASI)").font = section_font
         ws.merge_cells("B13:H13")
 
-        # Split markdown text lines and put into cells
-        current_row = 15
-        for line in executive_summary_text.split("\n"):
-            line_clean = line.strip()
-            if line_clean:
-                cell = ws.cell(row=current_row, column=2, value=line_clean)
-                if line_clean.startswith("#"):
-                    cell.font = Font(name="Calibri", size=11, bold=True, color="1A365D")
-                elif line_clean.startswith("-") or line_clean.startswith("*"):
-                    cell.font = Font(name="Calibri", size=10, color="2D3748")
-                else:
-                    cell.font = Font(name="Calibri", size=10, color="2D3748")
-                ws.merge_cells(start_row=current_row, start_column=2, end_row=current_row, end_column=8)
-                current_row += 1
+        from src.cleaner import bersihkan_markdown_dan_asterik
 
-        # Adjust column widths
-        ws.column_dimensions['A'].width = 4
-        ws.column_dimensions['B'].width = 25
-        ws.column_dimensions['C'].width = 15
-        ws.column_dimensions['D'].width = 20
-        ws.column_dimensions['E'].width = 20
-        ws.column_dimensions['F'].width = 22
-        ws.column_dimensions['G'].width = 22
-        ws.column_dimensions['H'].width = 15
+        # Bersihkan dari semua asterik dan markdown
+        clean_text = bersihkan_markdown_dan_asterik(executive_summary_text)
+
+        header_fill = PatternFill(start_color="EDF2F7", end_color="EDF2F7", fill_type="solid")
+        section_title_font = Font(name="Calibri", size=11, bold=True, color="1A365D")
+        body_font = Font(name="Calibri", size=10, color="2D3748")
+        bullet_font = Font(name="Calibri", size=10, color="2D3748")
+
+        current_row = 15
+        for line in clean_text.split("\n"):
+            line_clean = line.strip()
+
+            # Lewati baris kosong atau garis pembatas teks biasa
+            if not line_clean or line_clean.startswith("---") or line_clean.startswith("===") or line_clean.startswith("___") or line_clean.startswith("----"):
+                continue
+
+            # Lewati basa-basi chatbot AI
+            lower_line = line_clean.lower()
+            if any(basa in lower_line for basa in [
+                "tentu, berikut", "berikut adalah executive summary", "laporan ini kami sampaikan untuk menjadi",
+                "demikian executive summary ini"
+            ]):
+                continue
+
+            # Cek tipe baris (Judul Bagian bertombol angka 1., 2., 3., 4., atau teks kapital)
+            is_section_header = (
+                (len(line_clean) > 2 and line_clean[0].isdigit() and line_clean[1] in [".", ")"]) or
+                line_clean.startswith("EXECUTIVE SUMMARY") or
+                line_clean.startswith("Rekonsiliasi Advance Settlement")
+            )
+
+            # Cek bullet point
+            is_bullet = line_clean.startswith("- ") or line_clean.startswith("• ")
+
+            ws.merge_cells(start_row=current_row, start_column=2, end_row=current_row, end_column=8)
+            cell = ws.cell(row=current_row, column=2, value=line_clean)
+
+            if is_section_header:
+                cell.font = section_title_font
+                cell.fill = header_fill
+                cell.alignment = Alignment(horizontal="left", vertical="center", indent=1)
+                ws.row_dimensions[current_row].height = 24
+                # Beri border halus
+                for col_i in range(2, 9):
+                    ws.cell(row=current_row, column=col_i).fill = header_fill
+                    ws.cell(row=current_row, column=col_i).border = thin_border
+            elif is_bullet:
+                cell.font = bullet_font
+                cell.alignment = Alignment(horizontal="left", vertical="top", wrap_text=True)
+                # Hitung tinggi baris dinamis agar tulisan panjang tidak terpotong
+                approx_lines = max(1, len(line_clean) // 85 + 1)
+                ws.row_dimensions[current_row].height = max(20, approx_lines * 17)
+            else:
+                cell.font = body_font
+                cell.alignment = Alignment(horizontal="left", vertical="top", wrap_text=True)
+                approx_lines = max(1, len(line_clean) // 85 + 1)
+                ws.row_dimensions[current_row].height = max(20, approx_lines * 17)
+
+            current_row += 1
+
+        # Tambahkan baris kosong penutup
+        ws.row_dimensions[current_row].height = 15
 
         wb.save(self.excel_path)
         return self.excel_path

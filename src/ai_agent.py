@@ -16,8 +16,12 @@ class ExecutiveSummaryAgent:
         """
         Generates Executive Summary for Dashboard.
         Uses Gemini API if API key is provided, otherwise falls back to expert deterministic summary.
+        Output is guaranteed clean without any markdown asterisks (*).
         """
+        from src.cleaner import bersihkan_markdown_dan_asterik
+
         prompt = self._build_prompt(metrics, matched_results)
+        raw_summary = ""
 
         if self.api_key:
             try:
@@ -29,14 +33,18 @@ class ExecutiveSummaryAgent:
                     contents=prompt,
                     config=types.GenerateContentConfig(
                         temperature=0.2,
+                        max_output_tokens=8192
                     )
                 )
                 if response and response.text:
-                    return response.text
+                    raw_summary = response.text
             except Exception as e:
                 print(f"[Warning] Gemini API call encountered an error: {e}. Using expert deterministic summary.")
 
-        return self._generate_fallback_summary(metrics)
+        if not raw_summary:
+            raw_summary = self._generate_fallback_summary(metrics)
+
+        return bersihkan_markdown_dan_asterik(raw_summary)
 
     def _build_prompt(self, metrics: Dict[str, Any], matched_results: list) -> str:
         unsettled_info = ""

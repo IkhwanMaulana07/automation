@@ -101,7 +101,7 @@ with tab_chat:
         st.session_state.messages = [
             {
                 "role": "assistant",
-                "content": "Halo! Saya adalah **Finance AI Assistant** SouthCity. Saya dapat membantu Anda menganalisis data rekonsiliasi Uang Muka, memeriksa status multi-voucher, menghitung sisa saldo, atau membuat draf rekomendasi tindak lanjut bagi manajemen. Ada yang bisa saya bantu?"
+                "content": "Halo! Saya adalah Finance AI Assistant SouthCity. Saya dapat membantu Anda menganalisis data rekonsiliasi Uang Muka, memeriksa status multi-voucher, menghitung sisa saldo, atau membuat draf rekomendasi tindak lanjut bagi manajemen. Ada yang bisa saya bantu?"
             }
         ]
 
@@ -175,6 +175,8 @@ with tab_chat:
                 else:
                     response_text = f"Berdasarkan data rekonsiliasi: Total Advance adalah Rp {metrics['total_advance']:,.0f}, Realisasi Rp {metrics['total_realization']:,.0f}, dan Sisa Saldo Rp {metrics['total_saldo']:,.0f} (PBB JV 2 Summarecon)."
 
+                from src.cleaner import bersihkan_markdown_dan_asterik
+                response_text = bersihkan_markdown_dan_asterik(response_text)
                 st.markdown(response_text)
                 st.session_state.messages.append({"role": "assistant", "content": response_text})
 

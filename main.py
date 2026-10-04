@@ -77,10 +77,15 @@ def main():
     ai_agent = ExecutiveSummaryAgent(api_key=GEMINI_API_KEY, model_name=GEMINI_MODEL)
     executive_summary = ai_agent.generate_summary(metrics, results)
 
-    # Save Executive Summary Markdown
+    # Save Executive Summary (Clean without asterisks)
     with open(EXECUTIVE_SUMMARY_PATH, "w", encoding="utf-8") as f:
         f.write(executive_summary)
     print(f"[✓] Saved Executive Summary to: {EXECUTIVE_SUMMARY_PATH.name}")
+
+    summary_txt_path = EXECUTIVE_SUMMARY_PATH.with_suffix(".txt")
+    with open(summary_txt_path, "w", encoding="utf-8") as f:
+        f.write(executive_summary)
+    print(f"[✓] Saved Clean Executive Summary to: {summary_txt_path.name}")
 
     # Save JSON report
     report_data = {
