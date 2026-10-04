@@ -3,6 +3,9 @@
 **Role:** Junior AI & Automation Engineer  
 **Case:** Advance Settlement & General Ledger (GL) Reconciliation with Gemini AI & Google Sheets Sync
 
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/IkhwanMaulana07/automation/blob/main/notebooks/advance_settlement_walkthrough.ipynb)
+
+
 ---
 
 ## 📌 Ringkasan Eksekutif & Konteks Bisnis
