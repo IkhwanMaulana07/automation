@@ -1,0 +1,473 @@
+{
+  "metrics": {
+    "total_items": 15,
+    "total_advance": 570406879.0,
+    "total_realization": 463302663.0,
+    "total_saldo": 107104216.0,
+    "settlement_rate_pct": 81.22,
+    "count_settled": 14,
+    "count_partial": 1,
+    "count_unsettled": 0,
+    "partial_details": [
+      {
+        "row_idx": 15,
+        "date": "2026-02-25 00:00:00",
+        "advance_voucher": "PMT2/BK/2602/0092",
+        "desc": "PEMBAYARAN PBB JV 2 SUMMARECON TAHUN 2026",
+        "amount": 422974179.0,
+        "realization_date": "2026-04-23",
+        "realization_voucher": "BCA1/BM/2604/0069",
+        "realization_amount": 315869963.0,
+        "saldo": 107104216.0,
+        "status": "PARTIAL",
+        "vouchers_count": 1,
+        "breakdown": [
+          {
+            "gl_idx": 50,
+            "date": "2026-04-23",
+            "voucher": "BCA1/BM/2604/0069",
+            "amount": 315869963.0,
+            "desc": "PENERIMAAN PEMBAYARAN PBB MSCM AJB JV 2",
+            "reason": "Phrase: PBB JV 2 Summarecon / MSCM"
+          }
+        ],
+        "match_notes": "Phrase: PBB JV 2 Summarecon / MSCM"
+      }
+    ],
+    "unsettled_details": []
+  },
+  "results": [
+    {
+      "row_idx": 8,
+      "date": "2026-01-22 00:00:00",
+      "advance_voucher": "PMT2/BK/2601/0062",
+      "desc": "TP01/PO/26010005 FURNITURE SHOW UNIT APARTEMEN THE PARC SM 1132 - BAR STOOL",
+      "amount": 2500000.0,
+      "realization_date": "2026-04-02",
+      "realization_voucher": "ADV/BK/2604/0004",
+      "realization_amount": 2500000.0,
+      "saldo": 0.0,
+      "status": "SETTLED",
+      "vouchers_count": 1,
+      "breakdown": [
+        {
+          "gl_idx": 3,
+          "date": "2026-04-02",
+          "voucher": "ADV/BK/2604/0004",
+          "amount": 2500000.0,
+          "desc": "TP01/PO/26010005 FURNITURE SHOW UNIT APARTEMEN THE PARC SM 1132 - BAR STOOL",
+          "reason": "Exact PO: TP01/PO/26010005"
+        }
+      ],
+      "match_notes": "Exact PO: TP01/PO/26010005"
+    },
+    {
+      "row_idx": 9,
+      "date": "2026-01-22 00:00:00",
+      "advance_voucher": "PMT2/BK/2601/0064",
+      "desc": "STYLING APARTEMEN THE PARC SM 1132 (2 BEDROOM)",
+      "amount": 25695900.0,
+      "realization_date": "2026-04-17",
+      "realization_voucher": "ADV/BK/2604/0012, ADV/BK/2604/0013, ADV/BK/2604/0014, ADV/BK/2604/0015, ADV/BK/2604/0016, ADV/BK/2604/0017, ADV/BK/2604/0018, PMT2/BM/2604/0007",
+      "realization_amount": 25695900.0,
+      "saldo": 0.0,
+      "status": "SETTLED",
+      "vouchers_count": 8,
+      "breakdown": [
+        {
+          "gl_idx": 33,
+          "date": "2026-04-17",
+          "voucher": "ADV/BK/2604/0012",
+          "amount": 7867700.0,
+          "desc": "TP01/PO/26030008 FURNITURE & STYLING SHOW UNIT APARTEMEN THE PARC SM 1132 - IKEA",
+          "reason": "Phrase: Styling SM 1132 (2BR)"
+        },
+        {
+          "gl_idx": 34,
+          "date": "2026-04-17",
+          "voucher": "ADV/BK/2604/0013",
+          "amount": 8001000.0,
+          "desc": "TP01/PO/26030005 STYLING APARTEMEN THE PARC SM 1132 - COFFEE TABLE",
+          "reason": "Phrase: Styling SM 1132 (2BR)"
+        },
+        {
+          "gl_idx": 35,
+          "date": "2026-04-17",
+          "voucher": "ADV/BK/2604/0014",
+          "amount": 1006000.0,
+          "desc": "TP01/PO/26040005 STYLING APARTEMEN THE PARC SM 1132",
+          "reason": "Phrase: Styling SM 1132 (2BR)"
+        },
+        {
+          "gl_idx": 36,
+          "date": "2026-04-17",
+          "voucher": "ADV/BK/2604/0015",
+          "amount": 729000.0,
+          "desc": "TP01/PO/26040002 STYLING APARTEMEN THE PARC SM 1132",
+          "reason": "Phrase: Styling SM 1132 (2BR)"
+        },
+        {
+          "gl_idx": 37,
+          "date": "2026-04-17",
+          "voucher": "ADV/BK/2604/0016",
+          "amount": 761900.0,
+          "desc": "TP01/PO/26040004 STYLING APARTEMEN THE PARC SM 1132",
+          "reason": "Phrase: Styling SM 1132 (2BR)"
+        },
+        {
+          "gl_idx": 38,
+          "date": "2026-04-17",
+          "voucher": "ADV/BK/2604/0017",
+          "amount": 1610000.0,
+          "desc": "TP01/PO/26040003 STYLING APARTEMEN THE PARC SM 1132",
+          "reason": "Phrase: Styling SM 1132 (2BR)"
+        },
+        {
+          "gl_idx": 39,
+          "date": "2026-04-17",
+          "voucher": "ADV/BK/2604/0018",
+          "amount": 3692000.0,
+          "desc": "TP01/PO/26040006 STYLING APARTEMEN THE PARC SM 1132",
+          "reason": "Phrase: Styling SM 1132 (2BR)"
+        },
+        {
+          "gl_idx": 45,
+          "date": "2026-04-17",
+          "voucher": "PMT2/BM/2604/0007",
+          "amount": 2028300.0,
+          "desc": "PENGEMBALIAN KELEBIHAN DANA UM STYLING APARTEMEN THE PARC SM 1132 (2 BEDROOM) (P-SDT/I/070)",
+          "reason": "Phrase: Styling SM 1132 (2BR)"
+        }
+      ],
+      "match_notes": "Phrase: Styling SM 1132 (2BR)"
+    },
+    {
+      "row_idx": 10,
+      "date": "2026-01-22 00:00:00",
+      "advance_voucher": "PMT2/BK/2601/0065",
+      "desc": "STYLING APARTEMEN THE PARC SM 1127 (STUDIO)",
+      "amount": 1583700.0,
+      "realization_date": "2026-04-17",
+      "realization_voucher": "ADV/BK/2604/0019, ADV/BK/2604/0020, PMT2/BM/2604/0008",
+      "realization_amount": 1583700.0,
+      "saldo": 0.0,
+      "status": "SETTLED",
+      "vouchers_count": 3,
+      "breakdown": [
+        {
+          "gl_idx": 40,
+          "date": "2026-04-17",
+          "voucher": "ADV/BK/2604/0019",
+          "amount": 828400.0,
+          "desc": "TP01/PO/26030006 STYLING APARTEMEN THE PARC SM 1127 (STUDIO)",
+          "reason": "Phrase: Styling SM 1127 (Studio)"
+        },
+        {
+          "gl_idx": 41,
+          "date": "2026-04-17",
+          "voucher": "ADV/BK/2604/0020",
+          "amount": 447300.0,
+          "desc": "TP01/PO/26040008 STYLING APARTEMEN THE PARC SM 1127 (STUDIO)",
+          "reason": "Phrase: Styling SM 1127 (Studio)"
+        },
+        {
+          "gl_idx": 46,
+          "date": "2026-04-17",
+          "voucher": "PMT2/BM/2604/0008",
+          "amount": 308000.0,
+          "desc": "PENGEMBALIAN KELEBIHAN DANA UM  STYLING APARTEMEN THE PARC SM 1127 (STUDIO) (P-SDT/I/071)",
+          "reason": "Phrase: Styling SM 1127 (Studio)"
+        }
+      ],
+      "match_notes": "Phrase: Styling SM 1127 (Studio)"
+    },
+    {
+      "row_idx": 11,
+      "date": "2026-01-22 00:00:00",
+      "advance_voucher": "PMT2/BK/2601/0068",
+      "desc": "PAKET MEETING DI KIRANA RESTO & CAF\u00c9",
+      "amount": 1750000.0,
+      "realization_date": "2026-04-02",
+      "realization_voucher": "ADV/BK/2604/0005",
+      "realization_amount": 1750000.0,
+      "saldo": 0.0,
+      "status": "SETTLED",
+      "vouchers_count": 1,
+      "breakdown": [
+        {
+          "gl_idx": 4,
+          "date": "2026-04-02",
+          "voucher": "ADV/BK/2604/0005",
+          "amount": 1750000.0,
+          "desc": "FR01/PO/26010009 PAKET MEETING DI KIRANA RESTO & CAF\u00c9",
+          "reason": "Phrase: Kirana Resto Meeting"
+        }
+      ],
+      "match_notes": "Phrase: Kirana Resto Meeting"
+    },
+    {
+      "row_idx": 12,
+      "date": "2026-02-05 00:00:00",
+      "advance_voucher": "PMT2/BK/2602/0003",
+      "desc": "TALENTA - BUSSINES FLAT FOR 4 MONTHS (TERM-3) PERIODE 15 FEBRUARI 2026 - 14 JUNI 2026",
+      "amount": 10355000.0,
+      "realization_date": "2026-04-17",
+      "realization_voucher": "ADV/BK/2604/0008",
+      "realization_amount": 10355000.0,
+      "saldo": 0.0,
+      "status": "SETTLED",
+      "vouchers_count": 1,
+      "breakdown": [
+        {
+          "gl_idx": 32,
+          "date": "2026-04-17",
+          "voucher": "ADV/BK/2604/0008",
+          "amount": 10355000.0,
+          "desc": "TALENTA - BUSSINES FLAT FOR 4 MONTHS (TERM-3) PERIODE 15 FEBRUARI 2026 - 14 JUNI 2026",
+          "reason": "Phrase: Talenta Business Flat"
+        }
+      ],
+      "match_notes": "Phrase: Talenta Business Flat"
+    },
+    {
+      "row_idx": 13,
+      "date": "2026-02-05 00:00:00",
+      "advance_voucher": "PMT2/BK/2602/0005",
+      "desc": "FR01/PO/26010011 PENULIS WIKIPEDIA INDONESIA",
+      "amount": 304000.0,
+      "realization_date": "2026-04-09",
+      "realization_voucher": "ADV/BK/2604/0007",
+      "realization_amount": 304000.0,
+      "saldo": 0.0,
+      "status": "SETTLED",
+      "vouchers_count": 1,
+      "breakdown": [
+        {
+          "gl_idx": 14,
+          "date": "2026-04-09",
+          "voucher": "ADV/BK/2604/0007",
+          "amount": 304000.0,
+          "desc": "FR01/PO/26010011 PENULIS WIKIPEDIA INDONESIA (REVISI PO FR01/PO/26030017)",
+          "reason": "Exact PO: FR01/PO/26010011"
+        }
+      ],
+      "match_notes": "Exact PO: FR01/PO/26010011"
+    },
+    {
+      "row_idx": 14,
+      "date": "2026-02-12 00:00:00",
+      "advance_voucher": "PMT2/BK/2602/0071",
+      "desc": "FR01/PO/26010007 EO PAMERAN DI THE PARK SAWANGAN 9-15 FEBRUARI 2026",
+      "amount": 25070000.0,
+      "realization_date": "2026-04-09",
+      "realization_voucher": "ADV/BK/2604/0003",
+      "realization_amount": 25070000.0,
+      "saldo": 0.0,
+      "status": "SETTLED",
+      "vouchers_count": 1,
+      "breakdown": [
+        {
+          "gl_idx": 13,
+          "date": "2026-04-09",
+          "voucher": "ADV/BK/2604/0003",
+          "amount": 25070000.0,
+          "desc": "FR01/PO/26010007 EO PAMERAN DI THE PARK SAWANGAN 9-15 FEBRUARI 2026",
+          "reason": "Exact PO: FR01/PO/26010007"
+        }
+      ],
+      "match_notes": "Exact PO: FR01/PO/26010007"
+    },
+    {
+      "row_idx": 15,
+      "date": "2026-02-25 00:00:00",
+      "advance_voucher": "PMT2/BK/2602/0092",
+      "desc": "PEMBAYARAN PBB JV 2 SUMMARECON TAHUN 2026",
+      "amount": 422974179.0,
+      "realization_date": "2026-04-23",
+      "realization_voucher": "BCA1/BM/2604/0069",
+      "realization_amount": 315869963.0,
+      "saldo": 107104216.0,
+      "status": "PARTIAL",
+      "vouchers_count": 1,
+      "breakdown": [
+        {
+          "gl_idx": 50,
+          "date": "2026-04-23",
+          "voucher": "BCA1/BM/2604/0069",
+          "amount": 315869963.0,
+          "desc": "PENERIMAAN PEMBAYARAN PBB MSCM AJB JV 2",
+          "reason": "Phrase: PBB JV 2 Summarecon / MSCM"
+        }
+      ],
+      "match_notes": "Phrase: PBB JV 2 Summarecon / MSCM"
+    },
+    {
+      "row_idx": 16,
+      "date": "2026-03-05 00:00:00",
+      "advance_voucher": "PMT2/BK/2603/0008",
+      "desc": "HLJC/PO/26030003 BORDIR SERAGAM TENAGA KERJA HARIAN",
+      "amount": 2790000.0,
+      "realization_date": "2026-04-07",
+      "realization_voucher": "ADV/BK/2604/0009",
+      "realization_amount": 2790000.0,
+      "saldo": 0.0,
+      "status": "SETTLED",
+      "vouchers_count": 1,
+      "breakdown": [
+        {
+          "gl_idx": 11,
+          "date": "2026-04-07",
+          "voucher": "ADV/BK/2604/0009",
+          "amount": 2790000.0,
+          "desc": "HLJC/PO/26030003 BORDIR SERAGAM TENAGA KERJA HARIAN",
+          "reason": "Exact PO: HLJC/PO/26030003"
+        }
+      ],
+      "match_notes": "Exact PO: HLJC/PO/26030003"
+    },
+    {
+      "row_idx": 17,
+      "date": "2026-03-05 00:00:00",
+      "advance_voucher": "PMT2/BK/2603/0009",
+      "desc": "HLJC/PO/26030002 SERAGAM TENAGA KERJA HARIAN",
+      "amount": 3780000.0,
+      "realization_date": "2026-04-07",
+      "realization_voucher": "ADV/BK/2604/0001",
+      "realization_amount": 3780000.0,
+      "saldo": 0.0,
+      "status": "SETTLED",
+      "vouchers_count": 1,
+      "breakdown": [
+        {
+          "gl_idx": 9,
+          "date": "2026-04-07",
+          "voucher": "ADV/BK/2604/0001",
+          "amount": 3780000.0,
+          "desc": "HLJC/PO/26030002 SERAGAM TENAGA KERJA HARIAN",
+          "reason": "Exact PO: HLJC/PO/26030002"
+        }
+      ],
+      "match_notes": "Exact PO: HLJC/PO/26030002"
+    },
+    {
+      "row_idx": 18,
+      "date": "2026-03-05 00:00:00",
+      "advance_voucher": "PMT2/BK/2603/0016",
+      "desc": "SEWA SPACE OPEN TABLE LOKASI KAMPUNG KECIL CINERE TGL 9-15 MARET 2026",
+      "amount": 4202100.0,
+      "realization_date": "2026-04-07",
+      "realization_voucher": "ADV/BK/2604/0006",
+      "realization_amount": 4202100.0,
+      "saldo": 0.0,
+      "status": "SETTLED",
+      "vouchers_count": 1,
+      "breakdown": [
+        {
+          "gl_idx": 10,
+          "date": "2026-04-07",
+          "voucher": "ADV/BK/2604/0006",
+          "amount": 4202100.0,
+          "desc": "FR01/PO/26020012 SEWA SPACE OPEN TABLE LOKASI KAMPUNG KECIL CINERE TGL 9-15 MARET 2026",
+          "reason": "Phrase: Open Table Kampung Kecil"
+        }
+      ],
+      "match_notes": "Phrase: Open Table Kampung Kecil"
+    },
+    {
+      "row_idx": 19,
+      "date": "2026-03-05 00:00:00",
+      "advance_voucher": "PMT2/BK/2603/0019",
+      "desc": "TP01/PO/26010003 FURNITURE SHOW UNIT APARTEMEN THE PARC SM 1132 - LEMARI KIDS ROOM - PELUNASAN 50%",
+      "amount": 3300000.0,
+      "realization_date": "2026-04-14",
+      "realization_voucher": "ADV/BK/2604/0010",
+      "realization_amount": 3300000.0,
+      "saldo": 0.0,
+      "status": "SETTLED",
+      "vouchers_count": 1,
+      "breakdown": [
+        {
+          "gl_idx": 27,
+          "date": "2026-04-14",
+          "voucher": "ADV/BK/2604/0010",
+          "amount": 6600000.0,
+          "desc": "TP01/PO/26010003 FURNITURE SHOW UNIT APARTEMEN THE PARC SM 1132 - LEMARI KIDS ROOM",
+          "reason": "Exact PO: TP01/PO/26010003"
+        }
+      ],
+      "match_notes": "Matched via PO TP01/PO/26010003 (GL voucher 6.6M covers 50% advance settlement)"
+    },
+    {
+      "row_idx": 20,
+      "date": "2026-03-12 00:00:00",
+      "advance_voucher": "PMT2/BK/2603/0039",
+      "desc": "UM ACARA BUKA PUASA BERSAMA KARYAWAN SOUTHCITY 13 MARET 2026",
+      "amount": 3500000.0,
+      "realization_date": "2026-04-02",
+      "realization_voucher": "PMT2/BK/2604/0006",
+      "realization_amount": 3500000.0,
+      "saldo": 0.0,
+      "status": "SETTLED",
+      "vouchers_count": 1,
+      "breakdown": [
+        {
+          "gl_idx": 7,
+          "date": "2026-04-02",
+          "voucher": "PMT2/BK/2604/0006",
+          "amount": 3500000.0,
+          "desc": "TRANSFER KEKURANGAN DANA UM ACARA BUKA PUASA BERSAMA KARYAWAN SOUTHCITY 13 MARET 2026 (P-SDT/III/046)",
+          "reason": "Phrase: UM Buka Puasa Bersama"
+        }
+      ],
+      "match_notes": "Phrase: UM Buka Puasa Bersama"
+    },
+    {
+      "row_idx": 21,
+      "date": "2026-03-14 00:00:00",
+      "advance_voucher": "BCA2/BK/2603/0049",
+      "desc": "ADVANCE PEMBAYARAN KARTU KREDIT BCA  UNTUK TAGIHAN DROPBOX PERIODE 11/3/2026 - 11/3/2027",
+      "amount": 60000000.0,
+      "realization_date": "2026-04-01",
+      "realization_voucher": "BCA2/BK/2604/0026",
+      "realization_amount": 60000000.0,
+      "saldo": 0.0,
+      "status": "SETTLED",
+      "vouchers_count": 1,
+      "breakdown": [
+        {
+          "gl_idx": 1,
+          "date": "2026-04-01",
+          "voucher": "BCA2/BK/2604/0026",
+          "amount": 60000000.0,
+          "desc": "PELUNASAN TAGIHAN DROPBOX PERIODE 11/3/2026 - 11/3/2027 (USD 3.996 X RP 17.178,87) (BCA2/III/052)",
+          "reason": "Phrase: Dropbox Tagihan"
+        }
+      ],
+      "match_notes": "Phrase: Dropbox Tagihan"
+    },
+    {
+      "row_idx": 22,
+      "date": "2026-03-26 00:00:00",
+      "advance_voucher": "PMT2/BK/2603/0078",
+      "desc": "UM COMPLIMENTARY SHOW UNIT THE PARC BULAN MARET 2026",
+      "amount": 2602000.0,
+      "realization_date": "2026-04-08",
+      "realization_voucher": "PMT2/BM/2604/0006",
+      "realization_amount": 2602000.0,
+      "saldo": 0.0,
+      "status": "SETTLED",
+      "vouchers_count": 1,
+      "breakdown": [
+        {
+          "gl_idx": 12,
+          "date": "2026-04-08",
+          "voucher": "PMT2/BM/2604/0006",
+          "amount": 2602000.0,
+          "desc": "PENGEMBALIAN KELEBIHAN DANA UM COMPLIMENTARY SHOW UNIT THE PARC BULAN MARET 2026 (P-SDT/III/093)",
+          "reason": "Phrase: Complimentary Maret"
+        }
+      ],
+      "match_notes": "Phrase: Complimentary Maret"
+    }
+  ]
+}

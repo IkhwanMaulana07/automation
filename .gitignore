@@ -1,0 +1,29 @@
+# Virtual Environments
+venv/
+.venv/
+env/
+
+# Environment variables
+.env
+
+# Credentials & Service Accounts
+credentials.json
+service_account.json
+*.pem
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# Jupyter Notebook Checkpoints
+.ipynb_checkpoints/
+
+# IDE files
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
