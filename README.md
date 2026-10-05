@@ -15,7 +15,7 @@ Sistem secara cerdas:
 1. **Mengekstrak dan memproses 63 transaksi GL** (fokus pada 39 baris transaksi KREDIT penyelesaian/realisasi).
 2. **Memadankan (matching) 15 transaksi Uang Muka outstanding** di Working Paper menggunakan algoritma *Multi-Tier Matching Engine* (Regex PO/WO, Semantic Phrase Matching, dan penanganan Multi-Voucher).
 3. **Menghitung sisa saldo dinamis** (`Saldo = Amount - Realization Amount`) secara otomatis.
-4. **Mengintegrasikan Google Gemini AI** (`gemini-2.5-flash`) untuk menyusun *Executive Summary* komprehensif mengenai rasio penyelesaian, detail item *partial settlement* (PBB JV 2 Summarecon), dan rekomendasi tindak lanjut bagi Direksi.
+4. **Mengintegrasikan Google Gemini AI** (`gemini-3.5-flash-lite`) untuk menyusun *Executive Summary* komprehensif mengenai rasio penyelesaian, detail item *partial settlement* (PBB JV 2 Summarecon), dan rekomendasi tindak lanjut bagi Direksi.
 5. **Menghasilkan output terstruktur** ke dalam file Excel profesional dengan 2 tab (`Dashboard` dan `Working_Paper_Result`) serta dukungan sinkronisasi live ke **Google Sheets API**.
 
 ---
@@ -73,7 +73,7 @@ Proses pemadanan mengadopsi pendekatan **Multi-Tier Hierarchical Engine**:
 
 ## 🤖 Integrasi AI (Google Gemini API)
 
-Sistem menggunakan model **Google Gemini 2.5 Flash** untuk mentransformasi data mentah rekonsiliasi menjadi narasi eksekutif siap saji bagi Dewan Direksi:
+Sistem menggunakan model **Google Gemini 3.5 Flash** (`gemini-3.5-flash-lite`) untuk mentransformasi data mentah rekonsiliasi menjadi narasi eksekutif siap saji bagi Dewan Direksi:
 - **Analisis Kontekstual:** Prompt diinjeksi dengan metrik keuangan, rincian item unsettled, dan pola multi-voucher.
 - **Rekomendasi Tindak Lanjut Terarah:** Memberikan instruksi konkret bagi tim Finance untuk menagih sisa reimbursement PBB JV 2 Summarecon sebesar Rp 107,1M dan pengarsipan bukti potong pajak.
 - **Graceful Fallback:** Apabila koneksi internet atau API key tidak tersedia, modul secara otomatis beralih ke engine ringkasan analitis deterministik bawaan tanpa crash.

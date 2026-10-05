@@ -8,7 +8,7 @@ from typing import Dict, Any
 
 
 class ExecutiveSummaryAgent:
-    def __init__(self, api_key: str = None, model_name: str = "gemini-2.5-flash"):
+    def __init__(self, api_key: str = None, model_name: str = "gemini-3.5-flash-lite"):
         self.api_key = api_key or os.getenv("GEMINI_API_KEY", "")
         self.model_name = model_name
 
