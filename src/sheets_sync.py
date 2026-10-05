@@ -49,63 +49,78 @@ class DualSheetExporter:
             bottom=Side(style='thin', color='CBD5E0')
         )
 
-        # Title Banner (Rows 1-2, Cols A-H)
-        ws.merge_cells("A1:H1")
+        # Title Banner (Rows 1-2, Cols A-L)
+        ws.merge_cells("A1:L1")
         ws["A1"] = "SOUTHCITY FINANCE & IT AUTOMATION — ADVANCE SETTLEMENT DASHBOARD"
         ws["A1"].font = white_title_font
         ws["A1"].alignment = Alignment(horizontal="center", vertical="center")
         ws["A1"].fill = navy_fill
 
-        ws.merge_cells("A2:H2")
+        ws.merge_cells("A2:L2")
         ws["A2"] = f"Executive Reconciliation Report | Periode: April 2026 | Total Settlement Rate: {metrics['settlement_rate_pct']}%"
         ws["A2"].font = white_subtitle_font
         ws["A2"].alignment = Alignment(horizontal="center", vertical="center")
         ws["A2"].fill = navy_fill
 
-        ws.row_dimensions[1].height = 32
-        ws.row_dimensions[2].height = 20
+        # Fill navy for all banner cells
+        for col_i in range(1, 13):
+            ws.cell(row=1, column=col_i).fill = navy_fill
+            ws.cell(row=2, column=col_i).fill = navy_fill
+
+        ws.row_dimensions[1].height = 36
+        ws.row_dimensions[2].height = 22
         ws.row_dimensions[3].height = 10
 
-        # KPI CARDS (Row 4 to 6)
+        # KPI CARDS (Row 4 to 5) — wider merge ranges
         kpis = [
-            ("TOTAL ADVANCE", f"Rp {metrics['total_advance']:,.0f}", "B4:C5", "B4", "B5"),
-            ("TOTAL REALISASI", f"Rp {metrics['total_realization']:,.0f}", "D4:E5", "D4", "D5"),
-            ("SISA SALDO (OUTSTANDING)", f"Rp {metrics['total_saldo']:,.0f}", "F4:G5", "F4", "F5"),
+            ("TOTAL ADVANCE", f"Rp {metrics['total_advance']:,.0f}", "B", "D"),
+            ("TOTAL REALISASI", f"Rp {metrics['total_realization']:,.0f}", "E", "G"),
+            ("SISA SALDO (OUTSTANDING)", f"Rp {metrics['total_saldo']:,.0f}", "H", "J"),
         ]
 
-        for title, val, merge_range, top_cell, bot_cell in kpis:
-            col_start, col_end = merge_range.split(":")[0][0], merge_range.split(":")[1][0]
-            r_start = merge_range.split(":")[0][1]
-            r_end = merge_range.split(":")[1][1]
-
+        for title, val, col_start, col_end in kpis:
+            ws.merge_cells(f"{col_start}4:{col_end}4")
             ws[f"{col_start}4"] = title
             ws[f"{col_start}4"].font = card_header_font
             ws[f"{col_start}4"].alignment = Alignment(horizontal="center", vertical="center")
             ws[f"{col_start}4"].fill = card_fill
 
+            ws.merge_cells(f"{col_start}5:{col_end}5")
             ws[f"{col_start}5"] = val
             ws[f"{col_start}5"].font = card_val_font
             ws[f"{col_start}5"].alignment = Alignment(horizontal="center", vertical="center")
             ws[f"{col_start}5"].fill = card_fill
 
-            ws.merge_cells(f"{col_start}4:{col_end}4")
-            ws.merge_cells(f"{col_start}5:{col_end}5")
-
             for col in range(ord(col_start) - 64, ord(col_end) - 64 + 1):
                 for r in [4, 5]:
                     ws.cell(r, col).border = thin_border
+                    ws.cell(r, col).fill = card_fill
+
+        ws.row_dimensions[4].height = 22
+        ws.row_dimensions[5].height = 30
 
         # STATUS SUMMARY TABLE (Rows 7-11)
         ws.cell(row=7, column=2, value="RINGKASAN STATUS TRANSAKSI").font = section_font
-        ws.merge_cells("B7:D7")
+        ws.merge_cells("B7:F7")
 
         headers = ["Status", "Jumlah Item", "Keterangan"]
-        for col_idx, h in enumerate(headers, start=2):
+        header_cols = [2, 4, 5]
+        header_merges = [("B8", "C8"), None, ("E8", "G8")]
+        for i, (col_idx, h) in enumerate(zip(header_cols, headers)):
             cell = ws.cell(row=8, column=col_idx, value=h)
             cell.font = Font(name="Calibri", size=10, bold=True, color="FFFFFF")
             cell.fill = accent_blue
             cell.alignment = Alignment(horizontal="center", vertical="center")
             cell.border = thin_border
+        # Merge header cells
+        ws.merge_cells("B8:C8")
+        ws.merge_cells("E8:G8")
+        ws.cell(row=8, column=3).fill = accent_blue
+        ws.cell(row=8, column=3).border = thin_border
+        ws.cell(row=8, column=6).fill = accent_blue
+        ws.cell(row=8, column=6).border = thin_border
+        ws.cell(row=8, column=7).fill = accent_blue
+        ws.cell(row=8, column=7).border = thin_border
 
         status_rows = [
             ("Fully Settled (Lunas)", metrics['count_settled'], "100% Selesai & Cocok dengan GL"),
@@ -114,14 +129,19 @@ class DualSheetExporter:
         ]
 
         for idx, (stat, cnt, desc) in enumerate(status_rows, start=9):
+            ws.merge_cells(start_row=idx, start_column=2, end_row=idx, end_column=3)
             ws.cell(row=idx, column=2, value=stat).border = thin_border
-            ws.cell(row=idx, column=3, value=cnt).alignment = Alignment(horizontal="center")
             ws.cell(row=idx, column=3).border = thin_border
-            ws.cell(row=idx, column=4, value=desc).border = thin_border
+            ws.cell(row=idx, column=4, value=cnt).alignment = Alignment(horizontal="center")
+            ws.cell(row=idx, column=4).border = thin_border
+            ws.merge_cells(start_row=idx, start_column=5, end_row=idx, end_column=7)
+            ws.cell(row=idx, column=5, value=desc).border = thin_border
+            ws.cell(row=idx, column=6).border = thin_border
+            ws.cell(row=idx, column=7).border = thin_border
 
         # EXECUTIVE SUMMARY TEXT SECTION (Row 13 onwards)
         ws.cell(row=13, column=2, value="EXECUTIVE SUMMARY (LAPORAN REKONSILIASI)").font = section_font
-        ws.merge_cells("B13:H13")
+        ws.merge_cells("B13:L13")
 
         from src.cleaner import bersihkan_markdown_dan_asterik
 
@@ -133,6 +153,7 @@ class DualSheetExporter:
         body_font = Font(name="Calibri", size=10, color="2D3748")
         bullet_font = Font(name="Calibri", size=10, color="2D3748")
 
+        # Merge Executive Summary text across B-L (much wider)
         current_row = 15
         for line in clean_text.split("\n"):
             line_clean = line.strip()
@@ -149,17 +170,15 @@ class DualSheetExporter:
             ]):
                 continue
 
-            # Cek tipe baris (Judul Bagian bertombol angka 1., 2., 3., 4., atau teks kapital)
+            # Cek tipe baris
             is_section_header = (
                 (len(line_clean) > 2 and line_clean[0].isdigit() and line_clean[1] in [".", ")"]) or
                 line_clean.startswith("EXECUTIVE SUMMARY") or
                 line_clean.startswith("Rekonsiliasi Advance Settlement")
             )
-
-            # Cek bullet point
             is_bullet = line_clean.startswith("- ") or line_clean.startswith("• ")
 
-            ws.merge_cells(start_row=current_row, start_column=2, end_row=current_row, end_column=8)
+            ws.merge_cells(start_row=current_row, start_column=2, end_row=current_row, end_column=12)
             cell = ws.cell(row=current_row, column=2, value=line_clean)
 
             if is_section_header:
@@ -167,26 +186,38 @@ class DualSheetExporter:
                 cell.fill = header_fill
                 cell.alignment = Alignment(horizontal="left", vertical="center", indent=1)
                 ws.row_dimensions[current_row].height = 24
-                # Beri border halus
-                for col_i in range(2, 9):
+                for col_i in range(2, 13):
                     ws.cell(row=current_row, column=col_i).fill = header_fill
                     ws.cell(row=current_row, column=col_i).border = thin_border
             elif is_bullet:
                 cell.font = bullet_font
-                cell.alignment = Alignment(horizontal="left", vertical="top", wrap_text=True)
-                # Hitung tinggi baris dinamis agar tulisan panjang tidak terpotong
-                approx_lines = max(1, len(line_clean) // 85 + 1)
+                cell.alignment = Alignment(horizontal="left", vertical="top", wrap_text=True, indent=1)
+                approx_lines = max(1, len(line_clean) // 120 + 1)
                 ws.row_dimensions[current_row].height = max(20, approx_lines * 17)
             else:
                 cell.font = body_font
                 cell.alignment = Alignment(horizontal="left", vertical="top", wrap_text=True)
-                approx_lines = max(1, len(line_clean) // 85 + 1)
+                approx_lines = max(1, len(line_clean) // 120 + 1)
                 ws.row_dimensions[current_row].height = max(20, approx_lines * 17)
 
             current_row += 1
 
-        # Tambahkan baris kosong penutup
+        # Baris kosong penutup
         ws.row_dimensions[current_row].height = 15
+
+        # Atur lebar kolom agar seluruh teks pas dan rapi
+        ws.column_dimensions['A'].width = 3
+        ws.column_dimensions['B'].width = 18
+        ws.column_dimensions['C'].width = 16
+        ws.column_dimensions['D'].width = 14
+        ws.column_dimensions['E'].width = 18
+        ws.column_dimensions['F'].width = 16
+        ws.column_dimensions['G'].width = 16
+        ws.column_dimensions['H'].width = 16
+        ws.column_dimensions['I'].width = 14
+        ws.column_dimensions['J'].width = 14
+        ws.column_dimensions['K'].width = 12
+        ws.column_dimensions['L'].width = 12
 
         wb.save(self.excel_path)
         return self.excel_path
