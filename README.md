@@ -119,8 +119,8 @@ automation-skilltes/
 ### 2. Instalasi Dependensi
 Clone repository dan pasang library yang dibutuhkan:
 ```bash
-git clone <URL_REPOSITORY_ANDA>
-cd automation-skilltes
+git clone https://github.com/IkhwanMaulana07/automation.git
+cd automation
 pip install -r requirements.txt
 ```
 
@@ -129,13 +129,12 @@ Salin file `.env.example` menjadi `.env`:
 ```bash
 cp .env.example .env
 ```
-Isi konfigurasi pada file `.env`:
+Isi konfigurasi pada file `.env` jika ingin menghubungkan live Gemini API / Telegram Bot:
 ```env
 GEMINI_API_KEY=AIzaSy...your_gemini_api_key...
-GOOGLE_SERVICE_ACCOUNT_FILE=credentials.json
-SPREADSHEET_ID=your_google_sheet_id
+TELEGRAM_BOT_TOKEN=your_telegram_bot_token
 ```
-*(Catatan: Sistem tetap berjalan 100% normal dan menghasilkan output lengkap meskipun tanpa API key).*
+*(Catatan: Sistem tetap berjalan 100% normal dan menghasilkan output lengkap meskipun tanpa API key berkat smart deterministic fallback).*
 
 ### 4. Menjalankan Otomatisasi (CLI)
 Cukup jalankan satu perintah:
@@ -144,16 +143,30 @@ python main.py
 ```
 Output yang dihasilkan:
 - `output/Working_Paper_Result.xlsx` (File Excel 2 tab berformat rapi dengan formula `=D{r}-G{r}`).
-- `output/Executive_Summary.md` (Ringkasan eksekutif AI).
+- `output/Executive_Summary.txt` & `.md` (Ringkasan eksekutif AI bersih bebas asterik).
 - `output/reconciliation_report.json` (Audit trail rekonsiliasi).
 
-### 5. Menjalankan Unit Test
+### 5. Menjalankan Unit Test Otomatis
 Verifikasi kebenaran nominal dan logika matching:
+```bash
+pytest
+```
+atau:
 ```bash
 python -m unittest tests/test_reconciliation.py
 ```
 
-### 6. Menjalankan Jupyter Notebook
+### 6. Menjalankan Interactive Web App (Streamlit Dashboard)
+```bash
+streamlit run app.py
+```
+
+### 7. Menjalankan Interactive Telegram Bot
+```bash
+python telegram_bot.py
+```
+
+### 8. Menjalankan Jupyter Notebook
 Untuk melihat presentasi visual interaktif:
 ```bash
 jupyter notebook notebooks/advance_settlement_walkthrough.ipynb
@@ -175,5 +188,6 @@ Dalam proses pengerjaan technical test ini, **AI Coding Assistant** dimanfaatkan
 ## 📄 Deliverables Sesuai Instruksi Soal
 
 1. **File Excel Hasil Otomatisasi:** Tersedia di `output/Working_Paper_Result.xlsx` (memuat Sheet `Dashboard` dan `Working_Paper_Result`).
-2. **Link Google Sheets Live:** [Link Google Sheets - Anyone with link can view] *(Siap disinkronkan langsung via `sheets_sync.py`)*.
-3. **Repository GitHub Public:** [Link Repository GitHub Anda].
+2. **Link Google Sheets Live:** [Link Google Sheets - Anyone with link can view] *(Hasil import atau sinkronisasi via `sheets_sync.py`)*.
+3. **Repository GitHub Public:** [https://github.com/IkhwanMaulana07/automation](https://github.com/IkhwanMaulana07/automation).
+
